@@ -1,0 +1,32 @@
+#!/bin/bash -l
+###
+### Usage: gputest.sh
+### Change job name and email address as needed 
+###        
+### -- our name ---
+#SBATCH -J gat
+#SBATCH -o gat.output
+
+# partition
+#SBATCH -p xye 
+### to request a GPU
+#SBATCH --gres=gpu:2
+
+###Request an amount of RAM for the job
+#SBATCH --mem=128G #32GB requested.
+# Run on 1 node
+#SBATCH --nodes=1
+# Use 1 CPU
+#SBATCH --ntasks-per-node=2 
+
+/bin/echo Running on host: `hostname`.
+/bin/echo In directory: `pwd`
+/bin/echo Starting on: `date`
+ 
+# Load CUDA module
+module load singularity
+module load cuda
+###This is an example command
+### singularity pull docker://gladcolor/solo
+
+singularity exec --nv  docker://gladcolor/solo tools/dist_train.sh ./configs/vert/decoupled_vert_light_r50_fpn_8gpu_3x.py 2 
