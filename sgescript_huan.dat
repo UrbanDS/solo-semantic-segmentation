@@ -29,4 +29,4 @@ module load cuda
 ###This is an example command
 ### singularity pull docker://gladcolor/solo
 
-singularity exec --nv  docker://gladcolor/solo tools/dist_train.sh ./configs/vert/decoupled_vert_light_r50_fpn_8gpu_3x.py 2 
+singularity exec --nv  docker://gladcolor/solo tools/dist_train.sh ./configs/solo/decoupled_solo_r50_fpn_8gpu_1x.py
