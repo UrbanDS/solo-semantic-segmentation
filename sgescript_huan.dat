@@ -29,4 +29,7 @@ module load cuda
 ###This is an example command
 ### singularity pull docker://gladcolor/solo
 
-singularity exec --nv  docker://gladcolor/solo tools/dist_train.sh ./configs/solo/decoupled_solo_r50_fpn_8gpu_1x.py 1
+###singularity exec --nv  docker://gladcolor/solo tools/dist_train.sh ./configs/solo/decoupled_solo_r50_fpn_8gpu_1x.py 1
+###singularity exec --nv docker://gladcolor/solo python tools/test_ins_vis.py configs/solo/decoupled_solo_r50_fpn_8gpu_1x.py  work_dirs/decoupled_solo_release_r50_fpn_8gpu_1x/epoch_20.pth --show --save_dir  work_dirs/vis_solo
+###singularity exec --nv docker://gladcolor/solo ./tools/dist_test.sh work_dirs/decoupled_solo_release_r50_fpn_8gpu_1x/epoch_20.pth 2  --eval segm
+singularity exec --nv  docker://gladcolor/solo tools/dist_train.sh ./configs/solo/decoupled_solo_r50_fpn_8gpu_1x.py 2
